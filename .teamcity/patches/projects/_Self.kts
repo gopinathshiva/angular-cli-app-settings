@@ -2,6 +2,7 @@ package patches.projects
 
 import jetbrains.buildServer.configs.kotlin.v2018_2.*
 import jetbrains.buildServer.configs.kotlin.v2018_2.Project
+import jetbrains.buildServer.configs.kotlin.v2018_2.ProjectFeature
 import jetbrains.buildServer.configs.kotlin.v2018_2.ui.*
 
 /*
@@ -11,6 +12,30 @@ accordingly, and delete the patch script.
 */
 changeProject(DslContext.projectId) {
     features {
+        val feature1 = find<ProjectFeature> {
+            feature {
+                type = "project-graphs"
+                id = "PROJECT_EXT_3"
+                param("defaultFilters", "")
+                param("format", "text")
+                param("hideFilters", "")
+                param("series", """
+                    [
+                      {
+                        "type": "valueType",
+                        "title": "Build Duration (excluding Checkout Time)",
+                        "sourceBuildTypeId": "AngularCliApp_Build",
+                        "key": "BuildDurationNetTime"
+                      }
+                    ]
+                """.trimIndent())
+                param("seriesTitle", "Serie")
+                param("title", "Build Duration")
+            }
+        }
+        feature1.apply {
+            param("seriesTitle", "")
+        }
         add {
             feature {
                 type = "project-graphs"
