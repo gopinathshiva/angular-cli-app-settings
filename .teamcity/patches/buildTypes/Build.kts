@@ -46,7 +46,7 @@ changeBuildType(RelativeId("Build")) {
         insert(4) {
             script {
                 name = "Deploy"
-                scriptContent = "cp -rf /Users/gosivasa/appdy/teamcity-study/my-dream-app/dist/my-dream-app/ /Users/gosivasa/appdy/teamcity-study/my-dream-app/deploy/"
+                scriptContent = "cp -rf %system.teamcity.build.workingDir%/dist/my-dream-app/ /Users/gosivasa/appdy/teamcity-study/my-dream-app/deploy/"
             }
         }
     }
