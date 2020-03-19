@@ -32,5 +32,24 @@ changeProject(DslContext.projectId) {
                 param("seriesTitle", "Serie")
             }
         }
+        add {
+            feature {
+                type = "project-graphs"
+                id = "PROJECT_EXT_7"
+                param("series", """
+                    [
+                      {
+                        "type": "valueType",
+                        "title": "Number of Failed Tests",
+                        "sourceBuildTypeId": "AngularCliApp_Build",
+                        "key": "FailedTestCount"
+                      }
+                    ]
+                """.trimIndent())
+                param("format", "text")
+                param("title", "Failed Test Count")
+                param("seriesTitle", "Serie")
+            }
+        }
     }
 }
