@@ -26,7 +26,9 @@ changeProject(DslContext.projectId) {
                     ]
                 """.trimIndent())
                 param("format", "text")
-                param("title", "New chart title")
+                param("hideFilters", "")
+                param("title", "Build Success Rate")
+                param("defaultFilters", "")
                 param("seriesTitle", "Serie")
             }
         }
