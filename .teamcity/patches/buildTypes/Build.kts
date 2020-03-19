@@ -3,6 +3,8 @@ package patches.buildTypes
 import jetbrains.buildServer.configs.kotlin.v2018_2.*
 import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.ScriptBuildStep
 import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.script
+import jetbrains.buildServer.configs.kotlin.v2018_2.triggers.VcsTrigger
+import jetbrains.buildServer.configs.kotlin.v2018_2.triggers.vcs
 import jetbrains.buildServer.configs.kotlin.v2018_2.ui.*
 
 /*
@@ -46,6 +48,17 @@ changeBuildType(RelativeId("Build")) {
                 name = "Deploy"
                 scriptContent = "cp -rf /Users/gosivasa/appdy/teamcity-study/my-dream-app/dist/my-dream-app/ /Users/gosivasa/appdy/teamcity-study/my-dream-app/deploy/"
             }
+        }
+    }
+
+    triggers {
+        val trigger1 = find<VcsTrigger> {
+            vcs {
+                enabled = false
+            }
+        }
+        trigger1.apply {
+            enabled = true
         }
     }
 }
