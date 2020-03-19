@@ -41,5 +41,11 @@ changeBuildType(RelativeId("Build")) {
             name = "Run Build"
             scriptContent = "npm run build"
         }
+        insert(4) {
+            script {
+                name = "Deploy"
+                scriptContent = "cp -rf /Users/gosivasa/appdy/teamcity-study/my-dream-app/dist/my-dream-app/ /Users/gosivasa/appdy/teamcity-study/my-dream-app/deploy/"
+            }
+        }
     }
 }
